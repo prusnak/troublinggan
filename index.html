@@ -66,8 +66,8 @@
           text-decoration: none;
         }
         #image {
-            width: 640px;
-            height: 640px;
+            width: 80%;
+            height: auto;
         }
     </style>
 </head>
@@ -75,7 +75,7 @@
 <body>
     <div><a href="info.html">INFO</a></div>
     <div style="width: 60%;"><img id="image" src="#" onclick="nextImage();"></div>
-    <div><a href="essay.html">ESEJ/ESSAY</a></div>
+    <div><a href="essay.html">ESEJ<br>ESSAY</a></div>
     <script type="text/javascript">
         var timer = null;
         function randomInt(max) { return Math.floor(Math.random() * max); }
@@ -87,8 +87,17 @@
             var a = randomInt(2);
             var b = randomInt(1000);
             var e = document.getElementById("image");
-            var aa = a.toString().padStart(1, "0");
-            var bb = b.toString().padStart(4, "0");
+            var aa = a.toString();
+            var bb = b.toString();
+            if (b < 10) {
+                bb = "000" + bb;
+            } else
+            if (b < 100) {
+                bb = "00" + bb;
+            } else
+            if (b < 1000) {
+                bb = "0" + bb;
+            }
             e.src = "images/phi" + aa + "/seed" + bb + ".jpg";
             timer = setTimeout(nextImage, 10000);
         }
